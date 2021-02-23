@@ -7,15 +7,15 @@ import com.entities.IEntity;
 
 public class EntityFactory {
 
-	private static EntityFactory instance;
+	private static EntityFactory instance = null;
 
 	private EntityFactory() {
 
 	}
 
-	public static EntityFactory getInstance() {
+	public static synchronized EntityFactory getInstance() {
 		if (instance == null) {
-			return new EntityFactory();
+			instance = new EntityFactory();
 		}
 		return instance;
 	}
